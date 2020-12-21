@@ -28,6 +28,6 @@ app.get("/", cors(corsOptionsDelegate), (req, res) => {
   }, 2000);
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
