@@ -15,6 +15,9 @@
   "dependencies": {
     "cors": "2.8.5",
     "express": "4.17.1",
+    "graphql": "15.4.0",
+    "graphql-request": "3.4.0",
+    "lodash": "4.17.20",
     "prettier": "^2.2.1",
     "server-sent-events": "1.0.1"
   }
