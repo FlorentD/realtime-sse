@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello world</title>
+  </head>
+  <body>
+    Hello world
+    <ul></ul>
+    <script type="text/javascript">
+      const eventList = document.querySelector("ul");
+      const evtSource = new EventSource("/sse");
+      evtSource.onopen = (e) => console.log("open", e);
+      evtSource.onerror = (e) => console.error("error", e);
+      evtSource.addEventListener("coucou", (e) => console.log(e));
+      evtSource.onmessage = (e) => {
+        const newElement = document.createElement("li");
+        newElement.textContent = "message: " + e.data;
+        eventList.appendChild(newElement);
+      };
+    </script>
+  </body>
+</html>

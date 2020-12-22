@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const sse = require("server-sent-events");
 const port = 3000;
 
 const allowlist = ["https://kissbankule.vercel.app/"];
@@ -15,17 +16,10 @@ const corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions);
 };
 
-app.get("/", cors(corsOptionsDelegate), (req, res) => {
-  res.status(200).set({
-    connection: "keep-alive",
-    "cache-control": "no-cache",
-    "content-type": "application/json",
-  });
-  const data = { message: "hello, world!" };
-  setInterval(() => {
-    data.timesamp = Date.now();
-    res.write(JSON.stringify(data));
-  }, 2000);
+app.use("/", express.static("public"));
+
+app.get("/sse", sse, (req, res) => {
+  res.sse("event: coucou\ndata: im from the server\n\n");
 });
 
 app.listen(process.env.PORT || port, () => {
