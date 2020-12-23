@@ -63,14 +63,14 @@ router.get("/sse", (ctx) => {
 app.use(serve("./public")).use(router.routes()).use(router.allowedMethods());
 app.use(compress());
 
-http2
-  .createSecureServer(
-    {
-      key: fs.readFileSync("certs/server.key"),
-      cert: fs.readFileSync("certs/server.crt"),
-    },
-    app.callback()
-  )
-  .listen(PORT);
+// http2
+//   .createSecureServer(
+//     {
+//       key: fs.readFileSync("certs/server.key"),
+//       cert: fs.readFileSync("certs/server.crt"),
+//     },
+//     app.callback()
+//   )
+//   .listen(8080);
 
-// app.listen(PORT);
+app.listen(PORT);
