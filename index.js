@@ -1,6 +1,7 @@
 const http2 = require("http2");
 const fs = require("fs");
 const Index = require("koa");
+const compress = require("koa-compress");
 const { PassThrough } = require("stream");
 const serve = require("koa-static");
 const Router = require("koa-router");
@@ -60,6 +61,7 @@ router.get("/sse", (ctx) => {
 
 // response
 app.use(serve("./public")).use(router.routes()).use(router.allowedMethods());
+app.use(compress());
 
 // http2
 //   .createSecureServer(
