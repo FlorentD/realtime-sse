@@ -17,6 +17,9 @@
     "express": "4.17.1",
     "graphql": "15.4.0",
     "graphql-request": "3.4.0",
+    "koa": "2.13.0",
+    "koa-router": "10.0.0",
+    "koa-static": "5.0.0",
     "lodash": "4.17.20",
     "prettier": "^2.2.1",
     "server-sent-events": "1.0.1"

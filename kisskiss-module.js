@@ -60,9 +60,12 @@ const getKissKissStat = async () => {
   }
 };
 
-const onKissKissChange = (cb) =>
-  eventEmitter.on("kisskissbankbank", (amount) => {
+const onKissKissChange = (cb) => {
+  const callback = (amount) => {
     cb(amount);
-  });
+  };
+  eventEmitter.on("kisskissbankbank", callback);
+  return () => eventEmitter.off("kisskissbankbank", callback);
+};
 
 module.exports = { getKissKissStat, onKissKissChange };

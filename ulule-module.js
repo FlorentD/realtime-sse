@@ -31,9 +31,12 @@ const getUluleState = () => {
     });
 };
 
-const onUluleChange = (cb) =>
-  eventEmitter.on("ulule", (amount) => {
+const onUluleChange = (cb) => {
+  const callback = (amount) => {
     cb(amount);
-  });
+  };
+  eventEmitter.on("ulule", callback);
+  return () => eventEmitter.off("ulule", callback);
+};
 
 module.exports = { getUluleState, onUluleChange };
