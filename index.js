@@ -10,6 +10,7 @@ const { getKissKissStat, onKissKissChange } = require("./kisskiss-module");
 const { getUluleState, onUluleChange } = require("./ulule-module");
 
 const INTERVAL_CALLING = 5000;
+const PORT = process.env.PORT || 3000;
 
 setInterval(() => {
   getKissKissStat();
@@ -60,12 +61,14 @@ router.get("/sse", (ctx) => {
 // response
 app.use(serve("./public")).use(router.routes()).use(router.allowedMethods());
 
-http2
-  .createSecureServer(
-    {
-      key: fs.readFileSync("certs/server.key"),
-      cert: fs.readFileSync("certs/server.crt"),
-    },
-    app.callback()
-  )
-  .listen(8080);
+// http2
+//   .createSecureServer(
+//     {
+//       key: fs.readFileSync("certs/server.key"),
+//       cert: fs.readFileSync("certs/server.crt"),
+//     },
+//     app.callback()
+//   )
+//   .listen(8080);
+
+app.listen(PORT);
