@@ -125,9 +125,6 @@ app.get("/sse", sse, (req, res) => {
       })}\n\n`
     );
   });
-  app.get("/api", (req, res) => {
-    res.json(amounts);
-  });
   eventEmitter.on("ulule", (amount) => {
     res.sse(
       `event: ulule\ndata: ${JSON.stringify({
@@ -136,6 +133,10 @@ app.get("/sse", sse, (req, res) => {
       })}\n\n`
     );
   });
+});
+
+app.get("/api", (req, res) => {
+  res.json(amounts);
 });
 
 app.listen(process.env.PORT || port, () => {
