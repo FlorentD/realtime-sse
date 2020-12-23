@@ -114,12 +114,32 @@ const corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions);
 };
 
+function guidGenerator() {
+  const S4 = function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  };
+  return (
+    S4() +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    S4() +
+    S4()
+  );
+}
+
 app.use("/", express.static("public"));
 
 app.get("/sse", sse, (req, res) => {
   eventEmitter.on("kisskissbankbank", (amount) => {
     res.sse(
-      `event: kisskissbankbank\ndata: ${JSON.stringify({
+      `id:${guidGenerator()} \nevent: kisskissbankbank\ndata: ${JSON.stringify({
         amount,
         update: Date.now(),
       })}\n\n`
