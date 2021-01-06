@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "node index.js",
     "build": "next build",
-    "start": "node index.js",
+    "start": "npm run build && node index.js",
     "release": "NODE_ENV=production next build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
