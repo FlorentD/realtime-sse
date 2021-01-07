@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
-import { Heading } from "rebass";
+import Card from "../components/card";
+import { Heading, Flex, Text } from "rebass";
 
 const options = {
   weekday: "long",
@@ -48,17 +49,18 @@ function HomePage() {
   }, []);
   return (
     <Layout>
-      <Heading fontSize={[5]}>Projets populaires</Heading>
-      <Heading color="secondary">Argent collecté en temps réel</Heading>
-      <ul>
-        <li>
-          KissKissBankBank : <span>{kissKissAmount}</span>€ -{" "}
-          <span>{kissKissUpdate}</span>
-        </li>
-        <li>
-          Ulule : <span>{ululeAmount}</span>€ - <span>{ululeUpdate}</span>
-        </li>
-      </ul>
+      <Heading fontSize={[5, 6, 7]}>Temps réel</Heading>
+      <Text color="primary" fontWeight="bold">
+        Argent collecté en temps réel sur les projets populaires du moment
+      </Text>
+      <Flex pt={5}>
+        <Card
+          src="/KissKiss.png"
+          amount={kissKissAmount}
+          update={kissKissUpdate}
+        />
+        <Card src="/ulule.png" amount={ululeAmount} update={ululeUpdate} />
+      </Flex>
     </Layout>
   );
 }

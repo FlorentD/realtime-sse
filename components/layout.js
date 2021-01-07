@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { ThemeProvider } from "theme-ui";
-import theme from "@rebass/preset";
+import theme from "../theme";
 import { Box } from "rebass";
 
 const Layout = ({ children }) => {
@@ -10,6 +10,11 @@ const Layout = ({ children }) => {
       <Head>
         <meta charSet="UTF-8" />
         <title>Kissbankule Realtime</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Sintony&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <ThemeProvider theme={theme}>
         <Box
