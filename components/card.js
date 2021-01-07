@@ -36,10 +36,14 @@ const Card = ({ src, amount, update }) => {
       >
         {amount} €
       </Heading>
-      <Text fontStyle="italic" fontSize={[1]}>
-        Mis à jour le
-      </Text>
-      <Text>{update}</Text>
+      {update && (
+        <>
+          <Text fontStyle="italic" fontSize={[1]}>
+            Mis à jour le
+          </Text>
+          <Text>{update}</Text>
+        </>
+      )}
     </Box>
   );
 };

@@ -28,7 +28,7 @@
     "koa-static": "5.0.0",
     "lodash": "4.17.20",
     "next": "10.0.5",
-    "prettier": "^2.2.1",
+    "prettier": "2.2.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "rebass": "4.0.7",
