@@ -57,7 +57,6 @@ nextApp.prepare().then(() => {
       ctx.res.end();
     });
     ctx.req.on("error", () => {
-      console.log("ERROR HERE ?");
       closeKissKissEventEmitter();
       closeUluleEventEmitter();
       ctx.res.end();

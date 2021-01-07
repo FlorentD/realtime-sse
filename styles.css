@@ -1,0 +1,7 @@
+.text-transition {
+  transition: color 1s;
+}
+
+.text-transition-apply {
+  color: red !important;
+}

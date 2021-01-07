@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@rebass/preset": "4.0.5",
+    "classnames": "2.2.6",
     "cors": "2.8.5",
     "express": "4.17.1",
     "graphql": "15.4.0",
