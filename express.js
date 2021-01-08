@@ -3,6 +3,7 @@ const app = express();
 const sse = require("server-sent-events");
 const { getKissKissStat, onKissKissChange } = require("./kisskiss-module");
 const { getUluleState, onUluleChange } = require("./ulule-module");
+const { getKickstaterStats } = require("./modules/kickstarter");
 const { sendEvent } = require("./sse");
 const { getAmounts } = require("./amounts");
 
@@ -11,6 +12,7 @@ const INTERVAL_CALLING = 5000;
 setInterval(() => {
   getKissKissStat();
   getUluleState();
+  getKickstaterStats();
 }, INTERVAL_CALLING);
 
 const port = 3000;

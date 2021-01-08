@@ -10,6 +10,10 @@ const { getAmounts } = require("./amounts");
 const { sendEvent } = require("./sse");
 const { getKissKissStat, onKissKissChange } = require("./kisskiss-module");
 const { getUluleState, onUluleChange } = require("./ulule-module");
+const {
+  getKickstaterStats,
+  onKickstarterChange,
+} = require("./modules/kickstarter");
 
 const INTERVAL_CALLING = 5000;
 const PORT = process.env.PORT || 3000;
@@ -22,6 +26,7 @@ nextApp.prepare().then(() => {
   setInterval(() => {
     getKissKissStat();
     getUluleState();
+    getKickstaterStats();
   }, INTERVAL_CALLING);
 
   const app = new Index();
@@ -46,19 +51,30 @@ nextApp.prepare().then(() => {
         })
       )
     );
+    const closeKickstarterEventEmitter = onKickstarterChange((amount) =>
+      stream.write(
+        sendEvent({
+          event: "kickstarter",
+          data: { amount },
+        })
+      )
+    );
     ctx.req.on("close", () => {
       closeKissKissEventEmitter();
       closeUluleEventEmitter();
+      closeKickstarterEventEmitter();
       ctx.res.end();
     });
     ctx.req.on("finish", () => {
       closeKissKissEventEmitter();
       closeUluleEventEmitter();
+      closeKickstarterEventEmitter();
       ctx.res.end();
     });
     ctx.req.on("error", () => {
       closeKissKissEventEmitter();
       closeUluleEventEmitter();
+      closeKickstarterEventEmitter();
       ctx.res.end();
     });
     ctx.type = "text/event-stream";
