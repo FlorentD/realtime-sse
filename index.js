@@ -1,19 +1,20 @@
-const http2 = require("http2");
-const fs = require("fs");
 const next = require("next");
 const Index = require("koa");
 const compress = require("koa-compress");
 const { PassThrough } = require("stream");
-const serve = require("koa-static");
 const Router = require("koa-router");
-const { getAmounts } = require("./amounts");
+const { getAmounts } = require("./sse/amounts");
 const { sendEvent } = require("./sse");
-const { getKissKissStat, onKissKissChange } = require("./kisskiss-module");
-const { getUluleState, onUluleChange } = require("./ulule-module");
+const {
+  getKissKissStat,
+  onKissKissChange,
+} = require("./modules/kisskissbankbank");
+const { getUluleState, onUluleChange } = require("./modules/ulule");
 const {
   getKickstaterStats,
   onKickstarterChange,
 } = require("./modules/kickstarter");
+const { recording } = require("./orm");
 
 const INTERVAL_CALLING = 5000;
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,8 @@ nextApp.prepare().then(() => {
     getUluleState();
     getKickstaterStats();
   }, INTERVAL_CALLING);
+
+  recording();
 
   const app = new Index();
   const router = new Router();

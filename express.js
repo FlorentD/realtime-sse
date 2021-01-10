@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
 const sse = require("server-sent-events");
-const { getKissKissStat, onKissKissChange } = require("./kisskiss-module");
-const { getUluleState, onUluleChange } = require("./ulule-module");
+const {
+  getKissKissStat,
+  onKissKissChange,
+} = require("./modules/kisskissbankbank");
+const { getUluleState, onUluleChange } = require("./modules/ulule");
 const { getKickstaterStats } = require("./modules/kickstarter");
 const { sendEvent } = require("./sse");
-const { getAmounts } = require("./amounts");
+const { getAmounts } = require("./sse/amounts");
 
 const INTERVAL_CALLING = 5000;
 

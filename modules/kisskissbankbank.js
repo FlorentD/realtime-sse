@@ -3,11 +3,11 @@ const flow = require("lodash/fp/flow");
 const getOr = require("lodash/fp/getOr");
 const map = require("lodash/fp/map");
 const reduce = require("lodash/fp/reduce");
-const eventEmitter = require("./event-emitter");
+const eventEmitter = require("../sse/event-emitter");
 const {
   getKissKissBankBankValue,
   setKissKissBankBankValue,
-} = require("./amounts");
+} = require("../sse/amounts");
 
 const query = gql`
   {

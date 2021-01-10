@@ -9,13 +9,14 @@
   "scripts": {
     "dev": "node index.js",
     "build": "next build",
-    "start": "npm run release && NODE_ENV=production node index.js",
+    "start": "npx prisma generate && npm run release && NODE_ENV=production node index.js",
     "release": "NODE_ENV=production next build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Florent DUVEAU",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "2.14.0",
     "@rebass/preset": "4.0.5",
     "classnames": "2.2.6",
     "cors": "2.8.5",
@@ -35,5 +36,8 @@
     "rebass": "4.0.7",
     "server-sent-events": "1.0.1",
     "theme-ui": "0.3.5"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.14.0"
   }
 }

@@ -4,8 +4,8 @@ const getOr = require("lodash/fp/getOr");
 const reduce = require("lodash/fp/reduce");
 const concat = require("lodash/fp/concat");
 const slice = require("lodash/fp/slice");
-const eventEmitter = require("../event-emitter");
-const { getKickstarterValue, setKickstarterValue } = require("../amounts");
+const eventEmitter = require("../sse/event-emitter");
+const { getKickstarterValue, setKickstarterValue } = require("../sse/amounts");
 
 const getKickstaterStats = async () => {
   try {

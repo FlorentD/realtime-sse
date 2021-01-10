@@ -2,8 +2,8 @@ const https = require("https");
 const flow = require("lodash/fp/flow");
 const getOr = require("lodash/fp/getOr");
 const reduce = require("lodash/fp/reduce");
-const { getUluleValue, setUluleValue } = require("./amounts");
-const eventEmitter = require("./event-emitter");
+const { getUluleValue, setUluleValue } = require("../sse/amounts");
+const eventEmitter = require("../sse/event-emitter");
 
 const getUluleState = () => {
   https
